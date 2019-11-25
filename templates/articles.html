@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="{% static './js/articles.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static './style/articles.css' %}">
+	<title>Project</title>
+</head>
+<body>
+	<div class="content_wrapper">
+		<!--module: gulp-rigger includes here from /partials-->
+		<header>
+			<div class="logo_wrapper">
+				<img src="{% static 'img/logo.png' %}" alt="logo-img">
+			</div>
+			<nav>
+				<ul>
+					<li><a href="{% url 'index' %}">Главная</a></li>
+					<li><a href="{% url 'articles' %}">Просмотр статей</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<section>
+				<h1>Просмотр исходных статей</h1>
+				<p>Здесь вы можете найти и посмотреть статьи в первоисточнике с возможностью фильтрации</p>
+				<div class="sorting_selection">
+					<div>
+						<p>Фильтрация по категории и месту</p>
+					</div>
+					<select id="category_select" class="sorting" name="category">
+						<option value="all_categories">Без фильтра</option>
+						<option value="politics">Политика</option>
+						<option value="economy">Экономика</option>
+						<option value="accidents">Происшествия</option>
+						<option value="society">Общество</option>
+						<option value="culture">Культура</option>
+						<option value="sport">Спорт</option>
+					</select>
+					<select id="location_select" class="sorting" name="location">
+						<option value="all_regions">Без фильтра</option>
+						<option value="region">В Кр.крае/Хакасии</option>
+						<option value="siberia">В Сибири</option>
+						<option value="russia">В России</option>
+						<option value="world">В мире</option>
+					</select>
+				</div>
+
+				<div class="news_links">
+					{% for link in links %}
+						<a target="blank" href="{{ link.href }}", class="{{ link.class }} region">{{ link.title }}</a>
+					{% endfor %}
+					<!-- Example: <a target="blank" href="https://newslab.ru/news/899887" class="accidents siberia">В Кемерово жуткий пожар уничтожил два автоцентра (видео)</a> -->
+				</div>
+			</section>
+			<section></section>
+		</main>
+
+		<!--module: gulp-rigger includes here from /partials-->
+		<footer>
+			<div>
+				<a href="https://vk.com/golubaga">Обратная связь</a>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

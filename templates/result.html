@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <div class="container" style="width: 100%">
+        <div class="jumbotron">
+          {% for type in output %}
+            <div class="progress" style="height: 30px; margin-top: 20px;">
+              <div class="progress-bar bg-{{ type.color }}" role="progressbar" style="width: {{ type.proba_scale }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ type.type }} - {{ type.proba }}%</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </ul>
+  </body>
+</html>
