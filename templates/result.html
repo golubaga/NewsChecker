@@ -10,6 +10,12 @@
   <body>
     <ul>
       <div class="container" style="width: 100%">
+        <nav>
+				<ul>
+					<li><a href="{% url 'index' %}">Главная</a></li>
+					<li><a href="{% url 'articles' %}">Просмотр статей</a></li>
+				</ul>
+        </nav>
         <div class="jumbotron">
           {% for type in output %}
             <div class="progress" style="height: 30px; margin-top: 20px;">
