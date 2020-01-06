@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexView.as_view(), name='index'),
     path('articles/', views.ArticlesView.as_view(), name='articles'),
+    path('article/<pk>/', views.ArticleView.as_view(), name='article'),
     path('predict/', views.PredictView, name='predict'),
     #path('/', include('app.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

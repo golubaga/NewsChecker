@@ -26,6 +26,13 @@
 		<main>
 			<section>
 				<h1>Просмотр исходных статей</h1>
+
+				<h3>Всего статей - {{ total_count }}</h3>
+					{% for count in category_counts %}
+						<p>{{ count.category_name }} - {{ count.count }} <p>
+					{% endfor %}
+
+
 				<p>Здесь вы можете найти и посмотреть статьи в первоисточнике с возможностью фильтрации</p>
 				<div class="sorting_selection">
 					<div>
@@ -50,8 +57,9 @@
 				</div>
 
 				<div class="news_links">
+
 					{% for link in links %}
-						<a target="blank" href="{{ link.href }}", class="{{ link.class }} region">{{ link.title }}</a>
+						<a href="{% url 'article' pk=link.pk %}" class="{{ link.class }} region">{{ link.title }}</a>
 					{% endfor %}
 					<!-- Example: <a target="blank" href="https://newslab.ru/news/899887" class="accidents siberia">В Кемерово жуткий пожар уничтожил два автоцентра (видео)</a> -->
 				</div>
