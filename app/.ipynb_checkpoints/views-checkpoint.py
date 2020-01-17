@@ -58,14 +58,7 @@ class ArticlesView(TemplateView):
         context = super().get_context_data(**kwargs)
         with open('articles.pickle', 'rb') as f:
             articles = pickle.load(f)
-
-        if 'page' not in self.request.GET:
-            page = 0
-        else:
-            page = int(self.request.GET['page'])
-
-        context['articles'] = articles[page : (page + 1) * 10]
-        context['len_pages'] = range(len(articles) // 10)
+        context['articles'] = articles
 
         context['total_count'] = len(articles)
         counts = {}
